@@ -19,7 +19,7 @@ Once the limit of the number of requests, X, is reached, limit the number of req
    - Suggest to the user to copy and paste the URL they want to check, otherwise they will likely hit they limit of requests as they are typing.  That is not a good user experience.
    - Dynamically display the number of requests left.
    - Dynamically display the amount of time left once throttling begins.
-   - Right now, the code does not begin the timer until the request limit has been reached.  Depending on the use case, a more logical way to implement this might be to check for the number of requests over a rolling time period.  That way you only need the values of Y and Z.  For example, only allow up to 10 requests in any 30 minute time period.
+   - Right now, the code does not begin the timer until the request limit has been reached.  This offers some degree of efficiency in the JavaScript because we are able to remove the event listener while the throttle timer is running and the clear the throttle timer once the time is up and add a new event listener.  However, depending on the use case, a more logical way to implement the throttling might be to check for the number of requests over a rolling time period.  That way you only need the values of Y and Z.  For example, only allow up to 10 requests in any 30 minute time period.
 
 ## Running the code:
 To test it, I'd recommend changing the `throttlePeriod` constant to 1 minute.  Also, please note that using `localStorage` in a broswer requires a valid domain name so you will need to serve the static files, for example, on `localhost`.  Here is a list of one-line servers: https://gist.github.com/willurd/5720255  I used this Golang one because it was convenient for me: https://github.com/kidoman/serve 
