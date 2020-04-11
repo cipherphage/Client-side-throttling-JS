@@ -1,0 +1,178 @@
+html, body, div, article, section, main, footer, header, form, fieldset, legend,
+            pre, code, p, a, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, textarea,
+            input[type="email"], input[type="number"], input[type="password"],
+            input[type="tel"], input[type="text"], input[type="url"], .border-box { 
+  box-sizing: border-box; 
+} 
+
+small, .small { 
+  font-size: 14px; 
+} 
+
+h1, h2, h3, h4, h5, h6 { 
+  margin: 0;
+  font-weight: normal; 
+} 
+
+h1, .h1 { 
+  font-size: 45px; 
+} 
+
+h2, .h2 { 
+  font-size: 36px; 
+} 
+
+h3, .h3 { 
+  font-size: 27px; 
+} 
+
+h4, .h4 { 
+  font-size: 22.5px; 
+} 
+
+.large { 
+  font-size: 22px; 
+} 
+
+body, button, select { 
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 18px;
+  line-height: 1.6;
+  color: white; 
+  background-color: black;
+} 
+
+body { 
+  margin: 0;
+  word-wrap: break-word; 
+} 
+
+img { 
+  max-width: 100%; 
+} 
+
+.m-l { 
+  margin: 40px; 
+} 
+
+.mt { 
+  margin-top: 16px; 
+} 
+
+.mt-l { 
+  margin-top: 32px; 
+} 
+
+.mt-xl { 
+  margin-top: 64px; 
+} 
+
+.mb-l { 
+  margin-bottom: 32px; 
+} 
+
+.mr { 
+  margin-right: 16px; 
+} 
+
+.ml { 
+  margin-left: 16px; 
+} 
+
+.flex { 
+  display: flex; 
+} 
+
+.col { 
+  flex-direction: column; 
+} 
+
+.wrap { 
+  flex-wrap: wrap; 
+} 
+
+.center-horizontally { 
+  justify-content: center; 
+} 
+
+.center-horizontal { 
+  justify-content: center; 
+} 
+
+.center-vertically { 
+  align-items: center; 
+} 
+
+.grow { 
+  flex: 1 1 0; 
+} 
+
+.container { 
+  width: 100%; 
+} 
+
+.full-width { 
+  width: 100%; 
+} 
+
+.navbar-desktop > * { 
+  margin-bottom: 16px; 
+} 
+
+.right { 
+  justify-content: flex-end; 
+} 
+
+.left { 
+  justify-content: left; 
+} 
+
+.vmargin-only-between { 
+  margin-top: -8px; 
+} 
+
+.vmargin-only-between > * { 
+  margin-top: 8px; 
+} 
+
+@media (min-width: 768px) { 
+  .min-width-450 { 
+      min-width: 450px; 
+  } 
+
+  .container { 
+      width: 750px; 
+  } 
+ 
+} 
+
+@media (min-width: 992px) { 
+  .container { 
+      width: 970px; 
+  } 
+ 
+} 
+
+@media (min-width: 1200px) { 
+  .container { 
+      width: 1170px; 
+  } 
+ 
+} 
+
+#urltextbox {
+    min-width: 500px;
+    line-height: 32px;
+    min-height: 48px;
+    border-radius: 7px;
+    font-size: larger;
+}
+
+#urlerror {
+    color: red;
+    font-size: medium;
+}
+
+.bg-black {
+  background-color: black;
+}

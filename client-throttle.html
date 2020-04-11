@@ -1,0 +1,55 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>URL Checker</title>
+        <meta name="description" content="Client-side throttling example.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="referrer" content="no-referrer">
+        <link rel="stylesheet" href="client-throttle.css">
+    </head>
+
+    <body>
+        <!--[if IE]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please upgrade your browser to improve your experience and security.</p>
+        <![endif]-->
+        <section class="flex center-horizontal full-width bg-black" style="position: fixed; z-index: 1;">
+            <div class="container ml mr mt flex col">
+                <div class="flex wrap">
+                    <nav class="grow flex wrap right center-vertically navbar-desktop">
+                        <div>
+                            <div>
+                                <div>URL Checker (Client-side Throttling Example)</div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        
+        <section class="flex center-horizontal" style="height: 750px; background-image: url(&quot;stock-photo.jpeg&quot;); background-repeat: no-repeat; background-size: cover; background-blend-mode: multiply; background-position: center center; background-color: gray; color: rgb(255, 255, 255);">
+            <div class="container ml mr mt-xl flex col">
+                <div class="flex grow center-vertically" style="max-width: 500px;">
+                    <div>
+                        <h1 class="mt-xl">Verify a URL exists</h1>
+                        <div class="large mt-l mb-l">Type or paste a URL below.</div>
+                        <div class="flex left wrap align-center vmargin-only-between">
+                            <div class="mr">
+                                <input autocomplete="off" type="text" aria-label="URL" id="urltextbox" class="input" placeholder="https://example.com">
+                                <em><p id="info"></p></em>
+                                <em><p id="urlerror"></p></em>
+                            </div>
+                        </div>
+                        <h1 id="urlResultsTitle" class="mt-xl" hidden aria-hidden>Results:</h1>
+                        <div id="urlResults" class="large mt-l mb-l" hidden aria-hidden></div>
+                        <div class="mb-l"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="flex center-horizontal"></section>
+        <script src="client-throttle.js"></script>
+    </body>
+</html>
