@@ -165,6 +165,11 @@
     if (validateURL(url)) {
       // get throttle expiration date from local storage
       let throttleExpiration = localStorage.getItem('throttleExpiration');
+      // check throttle expiration in case old value is left in local storage
+      if (throttleExpiration < Date.now()) {
+        // remove old expiration
+        localStorage.removeItem('throttleExpiration');
+      }
       // increase request count
       reqCount++;
       // format url into json for server
