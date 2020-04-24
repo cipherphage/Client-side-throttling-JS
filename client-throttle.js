@@ -20,6 +20,8 @@
 
   // request counter
   let reqCount = 0;
+  // timer interval id
+  let intervalID;
   // our html elements
   let infoElem = document.getElementById('info');
   let urlInput = document.getElementById('urltextbox');
@@ -136,7 +138,7 @@
       reqCount = 0;
       urlInput.disabled = false;
       updateUrlError("");
-      clearInterval(throttleTimer);
+      clearInterval(intervalID);
       // re-add event listener for changes in user input
       urlInput.addEventListener("keyup", urlInputAction);
     }
@@ -157,7 +159,7 @@
       error: `Wait period ends at ${expiration.toTimeString()} on ${expiration.toDateString()}.`
     });
     // set interval to check the throttle expiration once per minute
-    setInterval(throttleTimer, timerCheck);
+    intervalID = setInterval(throttleTimer, timerCheck);
   };
 
   let urlInputAction = (e) => {
