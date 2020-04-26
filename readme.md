@@ -24,4 +24,8 @@ Once the limit of the number of requests X is reached, limit the number of reque
  - Overlapping throttles are common: one throttle might be set to prevent an abusive number of requests (e.g., in a DDoS) over short time periods (e.g., 30 seconds), while another throttle might be in place to simply limit the number of requests over longer time periods (e.g., set a quota of 1000 requests per day).
 
 ## Running the code:
-To test it, I'd recommend changing the `throttlePeriod` constant to 1 minute.  Also, please note that using `localStorage` in a broswer requires a valid domain name so you will need to serve the static files, for example, on `localhost`.  Here is a list of one-line servers: https://gist.github.com/willurd/5720255  I used this Golang one because it was convenient for me: https://github.com/kidoman/serve 
+If you want to play with it I'd recommend changing the `throttlePeriod` constant to 1 minute.  Also, please note that using `localStorage` in a broswer requires a valid domain name so you will need to serve the static files, for example, on `localhost`.  Here is a list of one-line servers: https://gist.github.com/willurd/5720255  I used this Golang one because it was convenient for me: https://github.com/kidoman/serve  Navigate to `localhost:<port>/client-throttle.html` in your browser.
+
+## Testing the code:
+Serve the files as above (see Running the code), but navigate to `localhost:<port>/test-runner.html` in your browser.
+Note: I've only written one test so far. More expansive testing will require further refactors of `client-throttle.js` so that all functions to be tested are available globally on the `window` object.

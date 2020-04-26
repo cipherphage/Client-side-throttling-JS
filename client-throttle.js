@@ -2,6 +2,7 @@
  * Note: I will use the following format for the JSON object returned from the server (on success):
  * { url: <string>, exists: <true|false>, file: <true|false>, folder: <true|false>, error: <string> }
  */
+var validateURL;
 
  window.onload = () => {
   /* 
@@ -16,21 +17,18 @@
   const timerCheck = 60 * 1000;  // # of milliseconds to wait for each check of localStorage (1 minute)
   const reqLimit = 10;  // # of allowed requests before throttling
   const throttlePeriod = 30 * 60 * 1000;  // # of milliseconds to wait (30 minutes)
-  const infoText = "The number of searches is limited to 10 every 30 minutes.";  // information text for the user
+  //const infoText = "The number of searches is limited to 10 every 30 minutes.";  // information text for the user
 
   // request counter
   let reqCount = 0;
   // timer interval id
   let intervalID;
   // our html elements
-  let infoElem = document.getElementById('info');
+  //let infoElem = document.getElementById('info');
   let urlInput = document.getElementById('urltextbox');
   let urlInputErr = document.getElementById('urlerror');
   let urlResultsTitle = document.getElementById('urlResultsTitle');
   let urlResults = document.getElementById('urlResults');
-
-  // add informational text
-  infoElem.textContent = infoText;
 
   // update error message on UI
   let updateUrlError = (msg) => {
@@ -48,20 +46,16 @@
   }
 
   // validate the URL
-  let validateURL = (url) => {
-    // check if URL passes regex
-    if (!urlRegex.test(url)) {
-      updateUrlError("Error: URL is invalid.");
-      return false;
-    }
+  validateURL = (url) => {
     // check length of URL string before anything else (len <= 2000)
     if (url.length > 2000) {
-      updateUrlError("Error: URL is too long.");
-      return false;
+      return { valid: false, msg: "Error: URL is too long." };
     }
-    // clear error message if no error
-    updateUrlError("");
-    return true;
+    // check if URL passes regex
+    if (!urlRegex.test(url)) {
+      return { valid: false, msg: "Error: URL is invalid." };
+    }
+    return { valid: true, msg: "" };
   }
 
   // use fetch api to make request
@@ -164,7 +158,10 @@
 
   let urlInputAction = (e) => {
     let url = e.target.value;
-    if (validateURL(url)) {
+    let validate = validateURL(url);
+    if (validate.valid) {
+      // clear error message
+      updateUrlError("");
       // get throttle expiration date from local storage
       let throttleExpiration = localStorage.getItem('throttleExpiration');
       // check throttle expiration in case old value is left in local storage
@@ -210,10 +207,14 @@
       //   }
       // }
       
+    } else {
+      // send error to DOM
+      updateUrlError(validate.msg);
     }
   };
 
-  // event listener for changes in user input
-  urlInput.addEventListener("keyup", urlInputAction);
-
+  if (urlInput) {
+    // event listener for changes in user input
+    urlInput.addEventListener("keyup", urlInputAction);
+  }
 };
